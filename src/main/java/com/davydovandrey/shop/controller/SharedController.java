@@ -15,16 +15,19 @@ import java.util.List;
 @RequestMapping("/user")
 public class SharedController {
 
-    @Autowired
-    private ProductServiceImpl productService;
-    @Autowired
-    private PersonServiceImpl personService;
-    @Autowired
-    private PurchaseServiceImpl purchaseService;
-    @Autowired
-    private NotificationServiceImpl notificationService;
-    @Autowired
-    private OrganizationServiceImpl organizationService;
+    private final ProductServiceImpl productService;
+    private final PersonServiceImpl personService;
+    private final PurchaseServiceImpl purchaseService;
+    private final NotificationServiceImpl notificationService;
+    private final OrganizationServiceImpl organizationService;
+
+    public SharedController(ProductServiceImpl productService, PersonServiceImpl personService, PurchaseServiceImpl purchaseService, NotificationServiceImpl notificationService, OrganizationServiceImpl organizationService) {
+        this.productService = productService;
+        this.personService = personService;
+        this.purchaseService = purchaseService;
+        this.notificationService = notificationService;
+        this.organizationService = organizationService;
+    }
 
     @PostMapping("/addProduct")
     public void addProduct(@RequestBody Product product){

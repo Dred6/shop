@@ -13,16 +13,19 @@ import java.util.List;
 @RestController
 public class AdminController {
 
-    @Autowired
-    private InformationAboutDiscountsServiceImpl informationAboutDiscountsService;
-    @Autowired
-    private PersonServiceImpl personService;
-    @Autowired
-    private NotificationServiceImpl notificationService;
-    @Autowired
-    private OrganizationServiceImpl organizationService;
-    @Autowired
-    private ProductServiceImpl productService;
+    private final InformationAboutDiscountsServiceImpl informationAboutDiscountsService;
+    private final PersonServiceImpl personService;
+    private final NotificationServiceImpl notificationService;
+    private final OrganizationServiceImpl organizationService;
+    private final ProductServiceImpl productService;
+
+    public AdminController(InformationAboutDiscountsServiceImpl informationAboutDiscountsService, PersonServiceImpl personService, NotificationServiceImpl notificationService, OrganizationServiceImpl organizationService, ProductServiceImpl productService) {
+        this.informationAboutDiscountsService = informationAboutDiscountsService;
+        this.personService = personService;
+        this.notificationService = notificationService;
+        this.organizationService = organizationService;
+        this.productService = productService;
+    }
 
     @PostMapping("/addDiscount")
     public void addDiscount(@RequestBody InformationAboutDiscounts informationAboutDiscounts){

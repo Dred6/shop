@@ -15,8 +15,11 @@ import java.util.List;
 
 @Service
 public class PersonServiceImpl implements PersonService, UserDetailsService {
-    @Autowired
-    private PersonRepository personRepository;
+    private final PersonRepository personRepository;
+
+    public PersonServiceImpl(PersonRepository personRepository) {
+        this.personRepository = personRepository;
+    }
 
     @Override
     public Person findPersonById(Long id){

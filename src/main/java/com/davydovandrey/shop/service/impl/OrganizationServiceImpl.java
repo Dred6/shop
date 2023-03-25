@@ -10,10 +10,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class OrganizationServiceImpl implements OrganizationService {
-    @Autowired
-    private OrganizationRepository organizationRepository;
-    @Autowired
-    private PersonRepository personRepository;
+    private final OrganizationRepository organizationRepository;
+    private final PersonRepository personRepository;
+
+    public OrganizationServiceImpl(OrganizationRepository organizationRepository, PersonRepository personRepository) {
+        this.organizationRepository = organizationRepository;
+        this.personRepository = personRepository;
+    }
 
     @Override
     public boolean addOrganization(Long id, Organization organization) {

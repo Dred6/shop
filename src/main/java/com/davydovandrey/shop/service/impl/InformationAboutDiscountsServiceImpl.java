@@ -8,8 +8,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class InformationAboutDiscountsServiceImpl implements InformationAboutDiscountsService {
-    @Autowired
-    private InformationAboutDiscountsRepository informationAboutDiscountsRepository;
+    private final InformationAboutDiscountsRepository informationAboutDiscountsRepository;
+
+    public InformationAboutDiscountsServiceImpl(InformationAboutDiscountsRepository informationAboutDiscountsRepository) {
+        this.informationAboutDiscountsRepository = informationAboutDiscountsRepository;
+    }
 
     @Override
     public void addDiscount(InformationAboutDiscounts informationAboutDiscounts) {

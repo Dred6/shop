@@ -15,10 +15,14 @@ import java.util.stream.IntStream;
 
 @Service
 public class PurchaseServiceImpl implements PurchaseService {
-    @Autowired
-    private PurchaseRepository purchaseRepository;
-    @Autowired
-    private ProductRepository productRepository;
+    private final PurchaseRepository purchaseRepository;
+    private final ProductRepository productRepository;
+
+    public PurchaseServiceImpl(PurchaseRepository purchaseRepository, ProductRepository productRepository) {
+        this.purchaseRepository = purchaseRepository;
+        this.productRepository = productRepository;
+    }
+
     @Override
     public Purchase getPurchaseById(Long id){
         if (purchaseRepository.findById(id).isPresent()){
